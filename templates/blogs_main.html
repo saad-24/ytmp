@@ -1,0 +1,17 @@
+<section style="padding-top: 2rem;padding-bottom: 2rem;">
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center">
+            {% for blog in blogs %}
+                <div class="card mb-3 col-md-10" style="padding-left: 0;padding-right: 0;">
+                    <img src="{{ blog.blog_image }}" class="card-img-top" alt="{{ blog.name }}">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ blog.blog_name }}</h5>
+                      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                      <a class="btn btn-primary" href="{% url 'blog_detail' blog_id=blog.id %}">Read More</a>
+                    </div>
+                  </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,17 @@
+{% include "header.html" %}
+
+{% include "ad_sense_horizontal_banner.html" %}
+
+<section style="padding: 4rem 0rem;">
+    <div class="container justify-content-center align-items-center" style="display: flex;flex-direction: column;">
+        <div class="col-md-12">
+            <img src="{{ blog.blog_image }}" alt="{{ blog.name }}" class="img-fluid">
+        </div>
+        <div class="col-md-10 text-white pt-5">
+            <h4>{{ blog.blog_name }}</h4>
+            {{ blog.blog_text|safe }}
+        </div>
+    </div>
+</section>
+
+{% include "footer.html" %}

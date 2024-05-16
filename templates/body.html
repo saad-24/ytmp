@@ -1,0 +1,9 @@
+<section class="body">
+    <form id="converter-form" method="post" >
+        {% csrf_token %}
+        <input type="text" name="url" placeholder="Enter video URL">
+        <button type="submit">Convert</button>
+    </form>
+    
+    <div id="download-container"></div>
+</section>

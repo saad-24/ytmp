@@ -1,0 +1,55 @@
+<section style="background-color: lightgray; padding: 1rem 0.5rem 0.5rem 1rem;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <p>Innovotech | 2024</p>
+            </div>
+            <div class="col-md-8" style="display: flex; justify-content: end;">
+                <ul style="display: flex; gap: 2rem;">
+                    <a href="{% url 'contact' %}" style="text-decoration: none; color: black;"><li style="list-style-type: none;">Contact Us</li></a>
+                    <a href="{% url 'privacy' %}" style="text-decoration: none; color: black;"><li style="list-style-type: none;">Privacy Policy</li></a>
+                    <a href="{% url 'terms' %}" style="text-decoration: none; color: black;"><li style="list-style-type: none;">Terms and Condition</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- ========================= JS here ========================= -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#converter-form').submit(function(event) {
+            event.preventDefault();
+            var formData = $(this).serialize();
+
+            $.ajax({
+                type: 'GET',
+                url: '/convert/',
+                data: formData,
+                success: function(response) {
+                    if (response.success) {
+                        var downloadLink = response.download_link;
+                        $('#download-container').html('<div style="display: flex;background-color: #5899f8;padding: 4rem;justify-content: center;align-items: center;margin: 3rem 30rem;border-radius: 1rem;"><a href="' + downloadLink + '" download style="color: white;text-decoration: none;font-size: 1.5rem;font-weight: 700;">Download</a></div>');
+                    } else {
+                        $('#download-container').html('<p>Conversion failed. Please try again.</p>');
+                    }
+                },
+                error: function() {
+                    $('#download-container').html('<p>Error processing your request. Please try again later.</p>');
+                }
+            });
+        });
+    });
+</script>
+    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
